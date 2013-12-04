@@ -45,7 +45,7 @@ public class Region extends Entity<Region> {
 	
 	private long createdAtMillis = System.currentTimeMillis();
 	
-	private Boolean claimable = null;
+	private int claimable = -1;
 	
 	////////////////////////////////////////////////////////////
 	
@@ -67,6 +67,7 @@ public class Region extends Entity<Region> {
 	
 	public void setOwnerFaction(String owner) {
 		String target = owner;
+		if(target == null) return;
 		if(MUtil.equals(this.ownerFaction, target)) return;
 		this.ownerFaction = target;
 		this.changed();
@@ -74,11 +75,13 @@ public class Region extends Entity<Region> {
 	
 	////////////////////////////////////////////////////////////
 	
-	public boolean isClaimable() {
+	public int isClaimable() {
 		return this.claimable;
 	}
 	
-	public void setClaimable(boolean state) {
+	public void setClaimable(int state) {
+		int claim = state;
+		if(claim == -1) return; 
 		if(this.claimable == state) return;
 		this.claimable = state;
 		this.changed();

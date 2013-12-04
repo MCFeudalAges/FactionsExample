@@ -1,5 +1,6 @@
 package com.massivecraft.factions;
 
+import com.github.mcfeudalages.kingdoms.entity.RegionColls;
 import com.massivecraft.factions.adapter.BoardAdapter;
 import com.massivecraft.factions.adapter.BoardMapAdapter;
 import com.massivecraft.factions.adapter.FFlagAdapter;
@@ -40,7 +41,6 @@ import com.massivecraft.factions.mixin.PowerMixinDefault;
 import com.massivecraft.factions.task.TaskPlayerDataRemove;
 import com.massivecraft.factions.task.TaskEconLandReward;
 import com.massivecraft.factions.task.TaskPlayerPowerUpdate;
-
 import com.massivecraft.mcore.Aspect;
 import com.massivecraft.mcore.AspectColl;
 import com.massivecraft.mcore.MPlugin;
@@ -113,6 +113,7 @@ public class Factions extends MPlugin
 		UConfColls.get().init();
 		UPlayerColls.get().init();
 		FactionColls.get().init();
+		RegionColls.get().init();
 		BoardColls.get().init();
 		FactionColls.get().reindexUPlayers();
 		this.databaseInitialized = true;

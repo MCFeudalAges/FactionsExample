@@ -60,6 +60,7 @@ permissions:
   factions.unclaim: {description: unclaim land where you stand, default: false}
   factions.unclaimall: {description: unclaim all land, default: false}
   factions.version: {description: see plugin version, default: false}
+  factions.rcreate: {description: create region, default: false}
 # -------------------------------------------- #
 # STAR NOTATION
 # -------------------------------------------- #
@@ -115,6 +116,7 @@ permissions:
       factions.unclaim: true
       factions.unclaimall: true
       factions.version: true
+      factions.rcreate: true
 # -------------------------------------------- #
 # KITS
 # -------------------------------------------- #
