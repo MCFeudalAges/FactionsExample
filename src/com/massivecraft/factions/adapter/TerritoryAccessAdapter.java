@@ -25,6 +25,7 @@ public class TerritoryAccessAdapter implements JsonDeserializer<TerritoryAccess>
 	public static final String HOST_FACTION_ALLOWED = "hostFactionAllowed";
 	public static final String FACTION_IDS = "factionIds";
 	public static final String PLAYER_IDS = "playerIds";
+	public static final String REGION_ID = "regionId";
 	
 	public static final Type SET_OF_STRING_TYPE = new TypeToken<Set<String>>(){}.getType();
 			
@@ -57,6 +58,7 @@ public class TerritoryAccessAdapter implements JsonDeserializer<TerritoryAccess>
 		Boolean hostFactionAllowed = null;
 		Set<String> factionIds = null;
 		Set<String> playerIds = null;
+		String regionId = null;
 		
 		// Read variables (test old values first)
 		JsonElement element = null;
@@ -77,7 +79,11 @@ public class TerritoryAccessAdapter implements JsonDeserializer<TerritoryAccess>
 		if (element == null) element = obj.get(PLAYER_IDS);
 		if (element != null) playerIds = context.deserialize(element, SET_OF_STRING_TYPE);
 		
-		return TerritoryAccess.valueOf(hostFactionId, hostFactionAllowed, factionIds, playerIds);
+		element = obj.get("region");
+		if(element == null) element = obj.get(REGION_ID);
+		regionId = element.getAsString();
+		
+		return TerritoryAccess.valueOf(hostFactionId, hostFactionAllowed, factionIds, playerIds, regionId);
 	}
 
 	@Override
@@ -110,7 +116,11 @@ public class TerritoryAccessAdapter implements JsonDeserializer<TerritoryAccess>
 		{
 			obj.add(PLAYER_IDS, context.serialize(src.getPlayerIds(), SET_OF_STRING_TYPE));
 		}
-
+		
+		if(!src.getAssociatedRegionID().isEmpty()) {
+			obj.add(REGION_ID, context.serialize(src.getAssociatedRegionID()));
+		}
+		
 		return obj;
 	}
 	

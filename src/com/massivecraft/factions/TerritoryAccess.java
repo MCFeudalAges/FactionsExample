@@ -36,6 +36,10 @@ public class TerritoryAccess
 	private final Set<String> playerIds;
 	public Set<String> getPlayerIds() { return this.playerIds; }
 	
+	//Region
+	public String associatedRegionID;
+	public String getAssociatedRegionID() { return this.associatedRegionID; }
+	
 	// -------------------------------------------- //
 	// FIELDS: DELTA
 	// -------------------------------------------- //
@@ -127,7 +131,7 @@ public class TerritoryAccess
 	// PRIVATE CONSTRUCTOR
 	// -------------------------------------------- //
 	
-	private TerritoryAccess(String hostFactionId, Boolean hostFactionAllowed, Collection<String> factionIds, Collection<String> playerIds)
+	private TerritoryAccess(String hostFactionId, Boolean hostFactionAllowed, Collection<String> factionIds, Collection<String> playerIds, String regionId)
 	{
 		if (hostFactionId == null) throw new IllegalArgumentException("hostFactionId was null");
 		this.hostFactionId = hostFactionId;
@@ -154,11 +158,21 @@ public class TerritoryAccess
 		this.playerIds = Collections.unmodifiableSet(playerIdsInner);
 		
 		this.hostFactionAllowed = (hostFactionAllowed == null || hostFactionAllowed);
+		
+		this.associatedRegionID = regionId;
+		//this.associatedRegionID = "TestRegion";
 	}
 	
+	private TerritoryAccess(String hostFactionId, Boolean hostFactionAllowed, Collection<String> factionIds, Collection<String> playerIds) {
+		this(hostFactionId, hostFactionAllowed, factionIds, playerIds, null);
+	}
 	// -------------------------------------------- //
 	// FACTORY: VALUE OF
 	// -------------------------------------------- //
+	
+	public static TerritoryAccess valueOf(String hostFactionId, Boolean hostFactionAllowed, Collection<String> factionIds, Collection<String> playerIds, String regionId) {
+		return new TerritoryAccess(hostFactionId, hostFactionAllowed, factionIds, playerIds, regionId);
+	}
 	
 	public static TerritoryAccess valueOf(String hostFactionId, Boolean hostFactionAllowed, Collection<String> factionIds, Collection<String> playerIds)
 	{
@@ -194,7 +208,7 @@ public class TerritoryAccess
 	// The host faction is still allowed (default) and no faction or player has been granted explicit access (default).
 	public boolean isDefault()
 	{
-		return this.isHostFactionAllowed() && this.getFactionIds().isEmpty() && this.getPlayerIds().isEmpty(); 
+		return this.isHostFactionAllowed() && this.getFactionIds().isEmpty() && this.getPlayerIds().isEmpty() && (this.getAssociatedRegionID() == null); 
 	}
 
 	// -------------------------------------------- //
