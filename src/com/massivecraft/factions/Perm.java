@@ -10,6 +10,7 @@ public enum Perm
 	// ENUM
 	// -------------------------------------------- //
 	RCREATE("rcreate"),
+	RDESTROY("rdestroy"),
 	ACCESS("access"),
 	ACCESS_VIEW("access.view"),
 	ACCESS_PLAYER("access.player"),

@@ -3,6 +3,7 @@ package com.massivecraft.factions.cmd;
 import java.util.List;
 
 import com.github.mcfeudalages.kingdoms.cmd.CmdKingdomsRegionCreate;
+import com.github.mcfeudalages.kingdoms.cmd.CmdKingdomsRegionDestroy;
 import com.massivecraft.factions.Factions;
 import com.massivecraft.factions.Perm;
 import com.massivecraft.factions.entity.MConf;
@@ -53,6 +54,7 @@ public class CmdFactions extends FCommand
 	public VersionCommand cmdFactionsVersion = new VersionCommand(Factions.get(), Perm.VERSION.node, "v", "version");
 	
 	public CmdKingdomsRegionCreate cmdKingdomsRegionCreate = new CmdKingdomsRegionCreate();
+	public CmdKingdomsRegionDestroy cmdKingdomsRegionDestroy = new CmdKingdomsRegionDestroy();
 	
 	// -------------------------------------------- //
 	// CONSTRUCT
@@ -100,6 +102,7 @@ public class CmdFactions extends FCommand
 		this.addSubCommand(this.cmdFactionsVersion);
 		
 		this.addSubCommand(this.cmdKingdomsRegionCreate);
+		this.addSubCommand(this.cmdKingdomsRegionDestroy);
 		
 		// Misc
 		this.setDesc("The faction base command");

@@ -47,6 +47,8 @@ public class Region extends Entity<Region> {
 	
 	private int claimable = -1;
 	
+	//private List
+	
 	////////////////////////////////////////////////////////////
 	
 	public boolean isNone() {
