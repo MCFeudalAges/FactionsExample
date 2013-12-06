@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.github.mcfeudalages.kingdoms.cmd.CmdKingdomsRegionCreate;
 import com.github.mcfeudalages.kingdoms.cmd.CmdKingdomsRegionDestroy;
+import com.github.mcfeudalages.kingdoms.cmd.CmdKingdomsRegionList;
 import com.massivecraft.factions.Factions;
 import com.massivecraft.factions.Perm;
 import com.massivecraft.factions.entity.MConf;
@@ -16,6 +17,7 @@ public class CmdFactions extends FCommand
 	// FIELDS
 	// -------------------------------------------- //
 	
+	//Factions
 	public CmdFactionsList cmdFactionsList = new CmdFactionsList();
 	public CmdFactionsFaction cmdFactionsFaction = new CmdFactionsFaction();
 	public CmdFactionsPlayer cmdFactionsPlayer = new CmdFactionsPlayer();
@@ -53,8 +55,10 @@ public class CmdFactions extends FCommand
 	public CmdFactionsPowerBoost cmdFactionsPowerBoost = new CmdFactionsPowerBoost();
 	public VersionCommand cmdFactionsVersion = new VersionCommand(Factions.get(), Perm.VERSION.node, "v", "version");
 	
+	//FAKingdoms
 	public CmdKingdomsRegionCreate cmdKingdomsRegionCreate = new CmdKingdomsRegionCreate();
 	public CmdKingdomsRegionDestroy cmdKingdomsRegionDestroy = new CmdKingdomsRegionDestroy();
+	public CmdKingdomsRegionList cmdKingdomsRegionList = new CmdKingdomsRegionList();
 	
 	// -------------------------------------------- //
 	// CONSTRUCT
@@ -63,6 +67,7 @@ public class CmdFactions extends FCommand
 	public CmdFactions()
 	{
 		// Add SubCommands
+		//Factions
 		this.addSubCommand(HelpCommand.get());
 		this.addSubCommand(this.cmdFactionsList);
 		this.addSubCommand(this.cmdFactionsFaction);
@@ -101,8 +106,10 @@ public class CmdFactions extends FCommand
 		this.addSubCommand(this.cmdFactionsPowerBoost);
 		this.addSubCommand(this.cmdFactionsVersion);
 		
+		//Kingdoms
 		this.addSubCommand(this.cmdKingdomsRegionCreate);
 		this.addSubCommand(this.cmdKingdomsRegionDestroy);
+		this.addSubCommand(this.cmdKingdomsRegionList);
 		
 		// Misc
 		this.setDesc("The faction base command");

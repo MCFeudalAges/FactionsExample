@@ -62,6 +62,7 @@ permissions:
   factions.version: {description: see plugin version, default: false}
   factions.rcreate: {description: create region, default: false}
   factions.rdestroy: {description: destroy region, default: false}
+  factions.rlist: {description: list the created regions, default: false}
 # -------------------------------------------- #
 # STAR NOTATION
 # -------------------------------------------- #
@@ -119,6 +120,7 @@ permissions:
       factions.version: true
       factions.rcreate: true
       factions.rdestroy: true
+      factions.rlist: true
 # -------------------------------------------- #
 # KITS
 # -------------------------------------------- #

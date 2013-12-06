@@ -9,8 +9,11 @@ public enum Perm
 	// -------------------------------------------- //
 	// ENUM
 	// -------------------------------------------- //
+	//FAKingdoms
 	RCREATE("rcreate"),
 	RDESTROY("rdestroy"),
+	RLIST("rlist"),
+	//Factions
 	ACCESS("access"),
 	ACCESS_VIEW("access.view"),
 	ACCESS_PLAYER("access.player"),
