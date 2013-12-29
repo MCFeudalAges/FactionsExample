@@ -11,7 +11,7 @@ import com.massivecraft.mcore.util.Txt;
 
 public class CmdKingdomsRegionDestroy extends FCommand {
 	public CmdKingdomsRegionDestroy() {
-		this.addAliases("rdestroy");
+		this.addAliases("rdestroy", "rd");
 		
 		this.addRequiredArg("region");
 		

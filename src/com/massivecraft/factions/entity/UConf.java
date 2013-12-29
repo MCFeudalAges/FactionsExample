@@ -71,6 +71,8 @@ public class UConf extends Entity<UConf>
 	public String factionIdSafezone = UUID.randomUUID().toString();
 	public String factionIdWarzone = UUID.randomUUID().toString();
 	
+	public String regionIDNone = UUID.randomUUID().toString();
+	
 	// -------------------------------------------- //
 	// DEFAULTS
 	// -------------------------------------------- //

@@ -13,6 +13,8 @@ public enum Perm
 	RCREATE("rcreate"),
 	RDESTROY("rdestroy"),
 	RLIST("rlist"),
+	RADDCHUNK("raddchunk"),
+	RREMOVECHUNK("rremovechunk"),
 	//Factions
 	ACCESS("access"),
 	ACCESS_VIEW("access.view"),

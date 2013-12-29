@@ -1,6 +1,12 @@
 package com.massivecraft.factions;
 
+import com.github.mcfeudalages.kingdoms.RegionAccess;
+import com.github.mcfeudalages.kingdoms.adapter.RegionAccessAdapter;
+import com.github.mcfeudalages.kingdoms.adapter.RegionMapAdapter;
+import com.github.mcfeudalages.kingdoms.adapter.RegionMapStoreAdapter;
 import com.github.mcfeudalages.kingdoms.entity.RegionColls;
+import com.github.mcfeudalages.kingdoms.entity.RegionMap;
+import com.github.mcfeudalages.kingdoms.entity.RegionMapColls;
 import com.massivecraft.factions.adapter.BoardAdapter;
 import com.massivecraft.factions.adapter.BoardMapAdapter;
 import com.massivecraft.factions.adapter.FFlagAdapter;
@@ -115,6 +121,7 @@ public class Factions extends MPlugin
 		FactionColls.get().init();
 		RegionColls.get().init();
 		BoardColls.get().init();
+		RegionMapColls.get().init();
 		FactionColls.get().reindexUPlayers();
 		this.databaseInitialized = true;
 		
@@ -167,8 +174,11 @@ public class Factions extends MPlugin
 	{
 		return super.getGsonBuilder()
 		.registerTypeAdapter(TerritoryAccess.class, TerritoryAccessAdapter.get())
+		.registerTypeAdapter(RegionAccess.class, RegionAccessAdapter.get())
 		.registerTypeAdapter(Board.class, BoardAdapter.get())
 		.registerTypeAdapter(Board.MAP_TYPE, BoardMapAdapter.get())
+		.registerTypeAdapter(RegionMap.MAP_TYPE, RegionMapStoreAdapter.get())
+		.registerTypeAdapter(RegionMap.class, RegionMapAdapter.get())
 		.registerTypeAdapter(Rel.class, RelAdapter.get())
 		.registerTypeAdapter(FPerm.class, FPermAdapter.get())
 		.registerTypeAdapter(FFlag.class, FFlagAdapter.get())

@@ -15,9 +15,10 @@ import com.massivecraft.mcore.store.MStore;
 
 public class CmdKingdomsRegionCreate extends FCommand{
 	public CmdKingdomsRegionCreate() {
-		this.addAliases("rcreate");
+		this.addAliases("rcreate", "rc");
 		this.addRequiredArg("name");
-		
+		this.addRequiredArg("world");
+		//this.addOptionalArg(arg, def);
 		//TODO add requirements 
 		this.addRequirements(ReqFactionsEnabled.get());
 		this.addRequirements(ReqHasPerm.get(Perm.RCREATE.node));
@@ -26,6 +27,7 @@ public class CmdKingdomsRegionCreate extends FCommand{
 	@Override
 	public void perform() {
 		String newName = this.arg(0);
+		String newWorld = this.arg(1);
 		
 		Factions.get().log("Getting Region Coll");
 		RegionColl coll = RegionColls.get().get(usender);
@@ -53,8 +55,10 @@ public class CmdKingdomsRegionCreate extends FCommand{
 		Factions.get().log("Creating region");
 		Region region = coll.create(regionId);
 		region.setName(newName);
+		region.setWorld(newWorld);
 		
-		usender.sendMessage("Created Region: " + region.getName());
-		Factions.get().log("Created region: " + region.getName());
+		String msg = "Created Region: " + region.getName() + " for world " + region.getWorld();
+		usender.sendMessage(msg);
+		Factions.get().log(msg);
 	}
 }

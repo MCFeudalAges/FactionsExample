@@ -1,6 +1,7 @@
 package com.github.mcfeudalages.kingdoms.entity;
 
 import com.massivecraft.factions.entity.BoardColls;
+import com.massivecraft.factions.entity.UConf;
 import com.massivecraft.factions.entity.UPlayerColls;
 import com.massivecraft.factions.util.MiscUtil;
 import com.massivecraft.mcore.store.Entity;
@@ -19,7 +20,7 @@ public class Region extends Entity<Region> {
 		this.setOwnerFaction(that.ownerFaction);
 		this.setClaimable(that.claimable);
 		this.setCreatedAtMillis(that.createdAtMillis);
-		
+		this.setWorld(that.world);
 		
 		return this;
 	}
@@ -33,6 +34,8 @@ public class Region extends Entity<Region> {
 		
 		// Clean the uplayers
 		UPlayerColls.get().getForUniverse(universe).clean();
+		
+		RegionMapColls.get().getForUniverse(universe).clean();
 	}
 	
 	////////////////////////////////////////////////////////////
@@ -47,13 +50,15 @@ public class Region extends Entity<Region> {
 	
 	private int claimable = -1;
 	
+	private String world = null;
+	
 	//private List
 	
 	////////////////////////////////////////////////////////////
 	
 	public boolean isNone() {
 		//TODO Use real UUID
-		return this.getId().equals("ffffffff-ffff-ffff-ffff-ffffffffffff");
+		return this.getId().equals(UConf.get(this).regionIDNone);
 	}
 	
 	public boolean isNormal()
@@ -77,6 +82,14 @@ public class Region extends Entity<Region> {
 	
 	////////////////////////////////////////////////////////////
 	
+	public String getWorld() {
+		return this.world;
+	}
+	
+	public void setWorld(String newWorld) {
+		if((this.world != null) && (this.world.equals(newWorld))) return;
+		this.world = newWorld;
+	}
 	public int isClaimable() {
 		return this.claimable;
 	}
@@ -143,5 +156,5 @@ public class Region extends Entity<Region> {
 		this.changed();
 	}
 
-	
+
 }

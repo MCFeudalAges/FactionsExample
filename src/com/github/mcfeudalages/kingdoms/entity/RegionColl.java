@@ -8,6 +8,8 @@ import org.bukkit.ChatColor;
 
 import com.massivecraft.factions.Factions;
 import com.massivecraft.factions.entity.BoardColls;
+import com.massivecraft.factions.entity.FactionColl;
+import com.massivecraft.factions.entity.UConf;
 import com.massivecraft.factions.entity.UPlayerColls;
 import com.massivecraft.factions.util.MiscUtil;
 import com.massivecraft.mcore.store.Coll;
@@ -88,6 +90,17 @@ public class RegionColl extends Coll<Region> {
 	public boolean isNameTaken(String str)
 	{
 		return this.getByName(str) != null;
+	}
+	public Region getNone() {
+		String id = UConf.get(this).regionIDNone;
+		Region region = this.get(id);
+		if(region != null) return region;
+		
+		region = this.create(id);
+		region.setOwnerFaction(UConf.get(this).factionIdNone);
+		region.setName("NO-REGION");
+		
+		return region;
 	}
 
 }
