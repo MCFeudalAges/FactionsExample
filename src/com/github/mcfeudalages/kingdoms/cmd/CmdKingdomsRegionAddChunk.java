@@ -8,6 +8,7 @@ import com.massivecraft.factions.Factions;
 import com.massivecraft.factions.Perm;
 import com.massivecraft.factions.cmd.FCommand;
 import com.massivecraft.factions.cmd.req.ReqFactionsEnabled;
+import com.massivecraft.factions.entity.UConf;
 import com.massivecraft.mcore.cmd.req.ReqHasPerm;
 import com.massivecraft.mcore.cmd.req.ReqIsPlayer;
 import com.massivecraft.mcore.ps.PS;
@@ -42,7 +43,7 @@ public class CmdKingdomsRegionAddChunk extends FCommand{
 		
 		RegionAccess ra = RegionMapColls.get().getRegionAccessAt(chunk);
 		if(ra != null) {
-			if(!ra.getAssociatedRegionID().equals(newRegion.getId())) {
+			if(!ra.getAssociatedRegionID().equals(UConf.get(me).regionIDNone)) {
 				msg("Chunk is alreadly apart of another region");
 				return;
 			}

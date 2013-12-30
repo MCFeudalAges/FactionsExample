@@ -47,19 +47,22 @@ public abstract class RegionChunkTask implements Runnable {
 	}
 	
 	public final void setTaskID(int ID) {
-		if(ID == -1) this.stop();
+		if(ID == -1) 
+			this.stop();
 		taskID = ID;
 	}
 
 	public final void run() {
+		Factions.get().log("In run method for region chunk task. Chunk Array size: " + chunkArraySize + " Current Chunk: " + currentChunkNumber);
 		if(!this.valid() || !readyToGo) return;
 		readyToGo = false;
-		if(currentChunkNumber < chunkArraySize) return;
+		if(!(currentChunkNumber < chunkArraySize)) return;
 		long loopStartTime = now();
 		
-		while(now() < loopStartTime + 20) {
+		while(now() < (loopStartTime + 20)) {
+			Factions.get().log("In while loop of Region Chunk Task");
 			if(!this.work(getCurrentChunk(), this.faction, this.region)) {
-				this.finish();
+				//this.finish();
 				return;
 			}
 			
@@ -67,17 +70,20 @@ public abstract class RegionChunkTask implements Runnable {
 				this.finish();
 				return;
 			}
-			readyToGo = true;
 		}
+		readyToGo = true;
 	}
 	
 	public final boolean moveToNext() {
+		
 		if(!this.valid()) return false;
 		currentChunkNumber++;
 		if(currentChunkNumber < chunkArraySize) {
-			return false;
-		} else {
+			Factions.get().log("Moving to next chunk: " + currentChunkNumber);
 			return true;
+		} else {
+			Factions.get().log("Chunk Array size has been reached");
+			return false;
 		}
 	}
 	

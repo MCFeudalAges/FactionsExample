@@ -32,7 +32,7 @@ public class CmdKingdomsRegionClaim extends FCommand {
 		PS currentChunk = PS.valueOf(me).getChunk(true);
 		
 		RegionAccess ra = RegionMapColls.get().getRegionAccessAt(currentChunk);
-		if(ra.getAssociatedRegionID().equals(UConf.get(this).regionIDNone)) {
+		if((ra == null) || ra.getAssociatedRegionID().equals(UConf.get(me).regionIDNone)) {
 			msg("You can't claim a chunk without a region");
 			return;
 		}
@@ -48,7 +48,7 @@ public class CmdKingdomsRegionClaim extends FCommand {
 			msg("This region lacks chunks!?");
 		}
 		
-		if(usender.getFaction().getId().equals(UConf.get(this).factionIdNone)){
+		if(usender.getFaction().getId().equals(UConf.get(me).factionIdNone)){
 			msg("You need to be apart of a faction to claim a region!");
 		}
 		if(!usender.isUsingAdminMode()) {
@@ -59,10 +59,12 @@ public class CmdKingdomsRegionClaim extends FCommand {
 		//KingdomsEventRegionClaim event = new KingdomsEventRegionClaim();
 		region.setOwnerFaction(usender.getFactionId());
 		
+		Factions.get().log("Going to add the Region ChunkTask");
 		new RegionChunkTask(chunkSet, usenderFaction, region) {
 			
 			@Override
 			public boolean work(PS chunk, Faction faction, Region region) {
+				Factions.get().log("In work mehtod of region chunk task");
 				FactionsEventChunkChange event = new FactionsEventChunkChange(usender.getSender(), chunk, faction);
 				event.run();
 				if(event.isCancelled()) return false;
