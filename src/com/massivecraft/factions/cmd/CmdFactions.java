@@ -3,6 +3,7 @@ package com.massivecraft.factions.cmd;
 import java.util.List;
 
 import com.github.mcfeudalages.kingdoms.cmd.CmdKingdomsRegionAddChunk;
+import com.github.mcfeudalages.kingdoms.cmd.CmdKingdomsRegionClaim;
 import com.github.mcfeudalages.kingdoms.cmd.CmdKingdomsRegionCreate;
 import com.github.mcfeudalages.kingdoms.cmd.CmdKingdomsRegionDestroy;
 import com.github.mcfeudalages.kingdoms.cmd.CmdKingdomsRegionList;
@@ -63,6 +64,7 @@ public class CmdFactions extends FCommand
 	public CmdKingdomsRegionList cmdKingdomsRegionList = new CmdKingdomsRegionList();
 	public CmdKingdomsRegionAddChunk cmdKingdomsRegionAddChunk = new CmdKingdomsRegionAddChunk();
 	public CmdKingdomsRegionRemoveChunk cmdKingdomsRegionRemoveChunk = new CmdKingdomsRegionRemoveChunk();
+	public CmdKingdomsRegionClaim cmdKingdomsRegionClaim = new CmdKingdomsRegionClaim();
 	
 	// -------------------------------------------- //
 	// CONSTRUCT
@@ -116,6 +118,7 @@ public class CmdFactions extends FCommand
 		this.addSubCommand(this.cmdKingdomsRegionList);
 		this.addSubCommand(this.cmdKingdomsRegionAddChunk);
 		this.addSubCommand(this.cmdKingdomsRegionRemoveChunk);
+		this.addSubCommand(this.cmdKingdomsRegionClaim);
 		
 		// Misc
 		this.setDesc("The faction base command");

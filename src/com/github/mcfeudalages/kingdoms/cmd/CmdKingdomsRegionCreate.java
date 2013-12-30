@@ -15,7 +15,7 @@ import com.massivecraft.mcore.store.MStore;
 
 public class CmdKingdomsRegionCreate extends FCommand{
 	public CmdKingdomsRegionCreate() {
-		this.addAliases("rcreate", "rc");
+		this.addAliases("rcreate", "rcr");
 		this.addRequiredArg("name");
 		this.addRequiredArg("world");
 		//this.addOptionalArg(arg, def);

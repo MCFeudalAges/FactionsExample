@@ -1,5 +1,7 @@
 package com.github.mcfeudalages.kingdoms.cmd;
 
-public class CmdKingdomsRegionUnclaim {
+import com.massivecraft.factions.cmd.FCommand;
+
+public class CmdKingdomsRegionUnclaim extends FCommand {
 
 }

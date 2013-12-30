@@ -65,6 +65,7 @@ permissions:
   factions.rlist: {description: list the created regions, default: false}
   factions.raddchunk: {description: add chunk to a region, default: false}
   factions.rremovechunk: {description: remove chunk from a region, default: false}
+  factions.rclaim: {description: for claiming of regions, default; false }
 # -------------------------------------------- #
 # STAR NOTATION
 # -------------------------------------------- #
@@ -125,6 +126,7 @@ permissions:
       factions.rlist: true
       factions.raddchunk: true
       factions.rremovechunk: true
+      factions.rclaim: true
 # -------------------------------------------- #
 # KITS
 # -------------------------------------------- #

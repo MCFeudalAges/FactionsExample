@@ -49,7 +49,7 @@ public class RegionMap extends Entity<RegionMap> implements RegionMapInterface {
 		if(ps == null) return null;
 		ps = ps.getChunkCoords(true);
 		RegionAccess ret = this.map.get(ps);
-		//if(ret == null) ret = RegionAccess.valueOf(U, claimable2)
+		if(ret == null) ret = RegionAccess.valueOf(UConf.get(this).regionIDNone);
 		return ret;
 	}
 
