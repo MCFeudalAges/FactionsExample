@@ -89,6 +89,7 @@ public class Region extends Entity<Region> {
 	public void setWorld(String newWorld) {
 		if((this.world != null) && (this.world.equals(newWorld))) return;
 		this.world = newWorld;
+		this.changed();
 	}
 	public int isClaimable() {
 		return this.claimable;

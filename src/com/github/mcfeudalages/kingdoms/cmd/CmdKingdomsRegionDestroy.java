@@ -29,6 +29,8 @@ public class CmdKingdomsRegionDestroy extends FCommand {
 		//event.run();
 		//if(event.isCancelled()) return;
 		
+		//TODO Unclaim the region chunks
+		
 		Factions.get().log(Txt.parse("<i>The Region <h>%s <i>(<h>%s<i>) was destroyed by <h>%s<i>.", region.getName(), region.getId(), usender.getDisplayName()));
 		usender.msg("<i>The Region <h>%s <i>(<h>%s<i>) has been destroyed!",region.getName(), region.getId());
 		

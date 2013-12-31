@@ -57,7 +57,7 @@ public class CmdKingdomsRegionCreate extends FCommand{
 		region.setName(newName);
 		region.setWorld(newWorld);
 		
-		String msg = "Created Region: " + region.getName() + " for world " + region.getWorld();
+		String msg = "Created Region: " + region.getName() + " for world " + region.getWorld() + "with ID:" + region.getId();
 		usender.sendMessage(msg);
 		Factions.get().log(msg);
 	}

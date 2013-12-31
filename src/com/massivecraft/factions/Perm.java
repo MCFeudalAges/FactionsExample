@@ -16,6 +16,7 @@ public enum Perm
 	RADDCHUNK("raddchunk"),
 	RREMOVECHUNK("rremovechunk"),
 	RCLAIM("rclaim"),
+	RUNCLAIM("runclaim"),
 	//Factions
 	ACCESS("access"),
 	ACCESS_VIEW("access.view"),

@@ -56,6 +56,7 @@ public class CmdKingdomsRegionRemoveChunk extends FCommand {
 		//KingdomsEventRegionAddedChunk event =
 		
 		RegionMapColls.get().setRegionAt(chunk, newRegion);
+		//TODO remove chunk from the board if it was claimed
 		
 		String chunkCoords = "[" + chunk.getChunkX() + "," + chunk.getChunkZ() + "," + chunk.getWorld() + "]";
 		String msg = "Added Chunk: " + chunkCoords + " to region: " + newRegion.getName();

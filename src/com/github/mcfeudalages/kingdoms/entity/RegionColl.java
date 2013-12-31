@@ -24,6 +24,7 @@ public class RegionColl extends Coll<Region> {
 	@Override
 	public void init() {
 		super.init();
+		this.createSpecialRegions();
 	}
 	
 	@Override
@@ -36,8 +37,14 @@ public class RegionColl extends Coll<Region> {
 			
 			BoardColls.get().clean();
 			UPlayerColls.get().clean();
+			//TODO 
+			//RegionMapColls.get().clean();
 		}
 		return ret;
+	}
+	
+	public void createSpecialRegions() {
+		this.getNone();
 	}
 	
 	public ArrayList<String> validateName(String str) {
