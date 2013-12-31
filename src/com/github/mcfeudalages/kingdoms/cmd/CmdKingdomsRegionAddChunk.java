@@ -4,6 +4,7 @@ import com.github.mcfeudalages.kingdoms.RegionAccess;
 import com.github.mcfeudalages.kingdoms.cmd.arg.ARRegion;
 import com.github.mcfeudalages.kingdoms.entity.Region;
 import com.github.mcfeudalages.kingdoms.entity.RegionMapColls;
+import com.github.mcfeudalages.kingdoms.event.KingdomsEventRegionAddedChunk;
 import com.massivecraft.factions.Factions;
 import com.massivecraft.factions.Perm;
 import com.massivecraft.factions.cmd.FCommand;
@@ -56,8 +57,9 @@ public class CmdKingdomsRegionAddChunk extends FCommand{
 		
 		//TODO Add check for non admin players
 		
-		//TODO Add Region Add Chunk Event
-		//KingdomsEventRegionAddedChunk event =
+		KingdomsEventRegionAddedChunk event = new KingdomsEventRegionAddedChunk(sender, newRegion, chunk);
+		event.run();
+		if(event.isCancelled()) return;
 		
 		RegionMapColls.get().setRegionAt(chunk, newRegion);
 		

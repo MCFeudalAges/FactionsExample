@@ -4,6 +4,7 @@ import java.util.Set;
 
 import com.github.mcfeudalages.kingdoms.entity.Region;
 import com.github.mcfeudalages.kingdoms.entity.RegionMapColls;
+import com.github.mcfeudalages.kingdoms.event.KingdomsEventRegionUnclaim;
 import com.github.mcfeudalages.kingdoms.task.RegionApplyFactionToChunkTask;
 import com.massivecraft.factions.Factions;
 import com.massivecraft.factions.Perm;
@@ -54,8 +55,12 @@ public class CmdKingdomsRegionUnclaim extends FCommand {
 			//TODO Logic for non admins to unclaim chunks
 		}
 		
-		currentRegion.setOwnerFaction(UConf.get(me).factionIdNone);
 		
+		KingdomsEventRegionUnclaim event = new KingdomsEventRegionUnclaim(sender, currentRegion, oldFaction, newFaction);
+		event.run();
+		if(event.isCancelled()) return;
+		
+		currentRegion.setOwnerFaction(UConf.get(me).factionIdNone);
 		Factions.get().log("Going to add a region task for unclaiming " + currentRegion.getName() + " from " + oldFaction.getName());
 		new RegionApplyFactionToChunkTask(chunkSet, newFaction, currentRegion, usender);
 	}

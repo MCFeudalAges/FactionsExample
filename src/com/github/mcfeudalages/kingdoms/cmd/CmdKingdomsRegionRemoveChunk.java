@@ -6,6 +6,7 @@ import com.github.mcfeudalages.kingdoms.entity.RegionColl;
 import com.github.mcfeudalages.kingdoms.entity.RegionColls;
 import com.github.mcfeudalages.kingdoms.entity.RegionMapColl;
 import com.github.mcfeudalages.kingdoms.entity.RegionMapColls;
+import com.github.mcfeudalages.kingdoms.event.KingdomsEventRegionAddedChunk;
 import com.massivecraft.factions.Factions;
 import com.massivecraft.factions.Perm;
 import com.massivecraft.factions.cmd.FCommand;
@@ -52,8 +53,9 @@ public class CmdKingdomsRegionRemoveChunk extends FCommand {
 
 		//TODO Add check for non admin players
 		
-		//TODO Add Region Add Chunk Event
-		//KingdomsEventRegionAddedChunk event =
+		KingdomsEventRegionAddedChunk event = new KingdomsEventRegionAddedChunk(sender, newRegion, chunk);
+		event.run();
+		if(event.isCancelled()) return;
 		
 		RegionMapColls.get().setRegionAt(chunk, newRegion);
 		//TODO remove chunk from the board if it was claimed

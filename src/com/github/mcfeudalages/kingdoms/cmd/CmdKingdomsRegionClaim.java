@@ -5,6 +5,7 @@ import java.util.Set;
 import com.github.mcfeudalages.kingdoms.RegionAccess;
 import com.github.mcfeudalages.kingdoms.entity.Region;
 import com.github.mcfeudalages.kingdoms.entity.RegionMapColls;
+import com.github.mcfeudalages.kingdoms.event.KingdomsEventRegionClaim;
 import com.github.mcfeudalages.kingdoms.task.RegionChunkTask;
 import com.massivecraft.factions.Factions;
 import com.massivecraft.factions.Perm;
@@ -55,8 +56,12 @@ public class CmdKingdomsRegionClaim extends FCommand {
 			//TODO add checking for non admins for claim
 		}
 		
-		//TODO Create Event
-		//KingdomsEventRegionClaim event = new KingdomsEventRegionClaim();
+		//TODO GetOldFaction
+		
+		KingdomsEventRegionClaim event = new KingdomsEventRegionClaim(sender, region, BoardColls.get().getFactionAt(currentChunk), usenderFaction);
+		event.run();
+		if(event.isCancelled()) return;
+		
 		region.setOwnerFaction(usender.getFactionId());
 		
 		Factions.get().log("Going to add the Region ChunkTask");

@@ -2,6 +2,7 @@ package com.github.mcfeudalages.kingdoms.cmd;
 
 import com.github.mcfeudalages.kingdoms.cmd.arg.ARRegion;
 import com.github.mcfeudalages.kingdoms.entity.Region;
+import com.github.mcfeudalages.kingdoms.event.KingdomsEventRegionDestroy;
 import com.massivecraft.factions.Factions;
 import com.massivecraft.factions.Perm;
 import com.massivecraft.factions.cmd.FCommand;
@@ -24,10 +25,10 @@ public class CmdKingdomsRegionDestroy extends FCommand {
 		Region region = this.arg(0, ARRegion.get(usender));
 		if(region == null) return;
 		
-		//TODO Create REgion Distroy event
-		//KingdomsEventRegionDestroy eventRegionDestroy = new KingdomsEventRegionDestroy()
-		//event.run();
-		//if(event.isCancelled()) return;
+		
+		KingdomsEventRegionDestroy event = new KingdomsEventRegionDestroy(sender, region);
+		event.run();
+		if(event.isCancelled()) return;
 		
 		//TODO Unclaim the region chunks
 		

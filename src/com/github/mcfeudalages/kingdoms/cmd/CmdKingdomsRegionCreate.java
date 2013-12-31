@@ -6,6 +6,7 @@ import com.github.mcfeudalages.kingdoms.entity.Region;
 import com.github.mcfeudalages.kingdoms.entity.RegionColl;
 import com.github.mcfeudalages.kingdoms.entity.RegionColls;
 import com.github.mcfeudalages.kingdoms.event.KingdomsEventRegionCreation;
+import com.griefcraft.scripting.ModuleLoader.Event;
 import com.massivecraft.factions.Factions;
 import com.massivecraft.factions.Perm;
 import com.massivecraft.factions.cmd.FCommand;
@@ -46,11 +47,11 @@ public class CmdKingdomsRegionCreate extends FCommand{
 		}
 		
 		String regionId = MStore.createId();
+		
 		Factions.get().log("Creating Event for region creation");
-		KingdomsEventRegionCreation createEvent = new KingdomsEventRegionCreation(sender, coll.getUniverse(), regionId, newName);
-		//TODO causes NullPointer Exeption need to fix
-		// createEvent.run();
-		if (createEvent.isCancelled()) return;
+		KingdomsEventRegionCreation event = new KingdomsEventRegionCreation(sender, coll.getUniverse(), regionId, newName);
+		event.run();
+		if(event.isCancelled()) return;
 		
 		Factions.get().log("Creating region");
 		Region region = coll.create(regionId);
