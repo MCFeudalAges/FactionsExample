@@ -12,7 +12,7 @@ public class KingdomsEventRegionClaim extends FactionsEventAbstractSender {
 	private static final HandlerList handlers = new HandlerList();
 	@Override
 	public HandlerList getHandlers() { return handlers; }
-	public HandlerList getHandlerList() { return handlers; }
+	public static HandlerList getHandlerList() { return handlers; }
 	
 	private final Faction oldFaction;
 	public Faction getOldFaction() { return oldFaction; }

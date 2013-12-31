@@ -11,7 +11,7 @@ public class KingdomsEventRegionAddedChunk extends FactionsEventAbstractSender {
 	private static final HandlerList handlers = new HandlerList();
 	@Override
 	public HandlerList getHandlers() { return handlers; }
-	public HandlerList getHandlerList() { return handlers; }
+	public static HandlerList getHandlerList() { return handlers; }
 
 	private final Region region;
 	public Region getOldRegion() { return region; }
