@@ -60,7 +60,7 @@ public class Faction extends Entity<Faction> implements EconomyParticipator
 	@Override
 	public void preDetach(String id)
 	{
-		Money.set(this, 0);
+		Money.set(this, null, 0);
 		
 		String universe = this.getUniverse();
 		

@@ -1,6 +1,7 @@
 main: com.massivecraft.factions.Factions
 name: Factions
 version: 3.0.0
+
 website: http://massivecraft.com/factions
 authors: [Cayorion, Brettflan]
 description: Factions allows the players to team up and claim land as their own and start wars with other factions.
