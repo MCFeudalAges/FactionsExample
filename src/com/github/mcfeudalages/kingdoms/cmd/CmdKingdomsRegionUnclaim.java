@@ -61,6 +61,7 @@ public class CmdKingdomsRegionUnclaim extends FCommand {
 		if(event.isCancelled()) return;
 		
 		currentRegion.setOwnerFaction(UConf.get(me).factionIdNone);
+		currentRegion.setOwnerFactionName("None");
 		Factions.get().log("Going to add a region task for unclaiming " + currentRegion.getName() + " from " + oldFaction.getName());
 		new RegionApplyFactionToChunkTask(chunkSet, newFaction, currentRegion, usender);
 	}

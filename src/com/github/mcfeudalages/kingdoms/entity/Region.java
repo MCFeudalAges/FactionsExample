@@ -21,6 +21,7 @@ public class Region extends Entity<Region> {
 		this.setClaimable(that.claimable);
 		this.setCreatedAtMillis(that.createdAtMillis);
 		this.setWorld(that.world);
+		this.setOwnerFactionName(that.factionName);
 		
 		return this;
 	}
@@ -52,12 +53,13 @@ public class Region extends Entity<Region> {
 	
 	private String world = null;
 	
+	private String factionName = null;
+	
 	//private List
 	
 	////////////////////////////////////////////////////////////
 	
 	public boolean isNone() {
-		//TODO Use real UUID
 		return this.getId().equals(UConf.get(this).regionIDNone);
 	}
 	
@@ -72,11 +74,23 @@ public class Region extends Entity<Region> {
 		return this.ownerFaction;
 	}
 	
+	public String getFactionName() {
+		return factionName;
+	}
+	
 	public void setOwnerFaction(String owner) {
 		String target = owner;
 		if(target == null) return;
 		if(MUtil.equals(this.ownerFaction, target)) return;
 		this.ownerFaction = target;
+		this.changed();
+	}
+	
+	public void setOwnerFactionName(String factName) {
+		String name = factName;
+		if(name == null) return;
+		if(MUtil.equals(this.factionName, name)) return;
+		this.factionName = name;
 		this.changed();
 	}
 	

@@ -63,8 +63,10 @@ public class CmdKingdomsRegionClaim extends FCommand {
 		if(event.isCancelled()) return;
 		
 		region.setOwnerFaction(usender.getFactionId());
+		region.setOwnerFactionName(usenderFaction.getName());
 		
 		Factions.get().log("Going to add the Region ChunkTask");
+		msg("Region " + region.getName() + "is now owned by " + usenderFaction.getName());
 		new RegionChunkTask(chunkSet, usenderFaction, region) {
 			
 			@Override
