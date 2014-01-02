@@ -10,7 +10,6 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentSkipListMap;
 
 import com.github.mcfeudalages.kingdoms.RegionAccess;
-import com.google.common.reflect.TypeToken;
 import com.massivecraft.factions.Factions;
 import com.massivecraft.factions.RelationParticipator;
 import com.massivecraft.factions.TerritoryAccess;
@@ -18,6 +17,7 @@ import com.massivecraft.factions.entity.BoardInterface;
 import com.massivecraft.factions.entity.UConf;
 import com.massivecraft.mcore.ps.PS;
 import com.massivecraft.mcore.store.Entity;
+import com.massivecraft.mcore.xlib.gson.reflect.TypeToken;
 
 public class RegionMap extends Entity<RegionMap> implements RegionMapInterface {
 
